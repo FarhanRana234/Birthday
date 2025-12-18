@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
      DATE CHECK
   ============================= */
   const today = new Date();
-  const test = true; // 🔴 set false when live
+  const test = false; // 🔴 set false when live
   const isBirthday = test || (today.getMonth() === 0 && today.getDate() === 30);
 
   /* =============================
