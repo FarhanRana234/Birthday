@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta property="og:title" content="Aleezay's Birtday">
+  <meta property="og:description" content="I hope you like it 😋💗">
+  <meta property="og:image" content="https://farhanrana234.github.io/Birthday/images/favicon.png">
+  <meta property="og:url" content="https://farhanrana234.github.io/Birthday/index.html">
+  <meta property="og:type" content="website">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Take a Look at My Girlfriend 🌷😋</title>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<div id="birthdayScreen" style="
+  position:fixed;
+  inset:0;
+  background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:99999;
+  text-align:center;
+  color:white;
+  flex-direction:column;
+">
+  <div class="content">
+      <h1 style="font-size:3rem">Happy Birthday Aleezay 🎉</h1>
+      <p style="max-width:500px;font-size:1.2rem;padding:20px">
+        HIII ALEEZAY 💗, Hope you're Having an Amazing day. This is a bit of a surprise which i planned :3, but it got foiled cuz i dont have patience. its a special day hmmm 😛, i hope you're having lots n lots of fun. And again HAPPY BIRTHDAYY! (Thankyou mom for giving birth to such a angel like you 🤭).
+      </p>
+      <btn id="candle" style="font-size:4rem;cursor: pointer;">🕯️</btn>
+      <small>Blow the candle </small>
+  </div>
+  <img src="images/stickers/kitty-left1.png" class="sticker left wave" alt="">
+  <img src="images/stickers/kitty-right.png" class="sticker right" alt="">
+  <button id="playBirthdayMusicBtn" class="music-btn birthday-btn">
+    ▶ Play Birthday Music
+  </button>
+</div>
+<body id="body">
+  <button id="playBgMusicBtn" class="music-btn">
+  ▶ Play Music
+ </button>
+  <a href="secret.html" style="opacity:0.5">meow</a>
+  <header>
+    <h1>Take a look at my Girlfriend 🕺🏻🌷</h1>
+   
+  </header>
+
+  <section class="trend">
+    <span>Yeah… cuz she’s the only one i got. :3</span>
+  </section>
+
+  <section class="gallery slider-track">
+    <a href="her1.html" class="card"><img src="images/her1.jpeg"></a>
+    <a href="her2.html" class="card"><img src="images/her2.jpeg"></a>
+    <a href="her3.html" class="card"><img src="images/her3.jpeg"></a>
+    <a href="her4.html" class="card"><img src="images/her4.jpeg"></a>
+  </section>
+
+  <section class="message">
+    <h2>Hi Aleezay!!🌷💗</h2>
+    <p>
+      If you're seeing this :3, I love you very much, to the point that I would do things like this to make you happy, you make my life filled with happiness which I can't imagine would be possible without you-, you make a diffirence my love :3. MWAHHH!! 💗
+    </p>
+  </section>
+
+  <footer>
+    Made by Farhan (yes me nigga) :3
+  </footer>
+<script>
+  // Animate gallery cards on scroll
+function animateGalleryCards() {
+  const cards = document.querySelectorAll('.gallery .card');
+  const galleryRect = document.querySelector('.gallery').getBoundingClientRect();
+
+  cards.forEach(card => {
+    const cardRect = card.getBoundingClientRect();
+
+    // Check if at least 50% of card is visible
+    const isVisible = 
+      cardRect.left + cardRect.width * 0.5 > 0 &&
+      cardRect.right - cardRect.width * 0.5 < window.innerWidth;
+
+    if(isVisible) {
+      card.classList.add('visible');
+    } else {
+      card.classList.remove('visible');
+    }
+  });
+}
+
+// Trigger on load and scroll
+window.addEventListener('load', animateGalleryCards);
+window.addEventListener('scroll', animateGalleryCards);
+window.addEventListener('resize', animateGalleryCards);
+
+// Optional: horizontal scroll for mobile
+document.querySelector('.gallery').addEventListener('scroll', animateGalleryCards);
+
+  /* =============================
+     FLOATING HEARTS
+  ============================= */
+  const emojis = ['❤️', '💖', '💕', '💗'];
+  setInterval(() => {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDuration = 6 + Math.random() * 4 + 's';
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 10000);
+  }, 500);
+</script>
+
+<!-- Add this somewhere in your index.html -->
+<audio id="bgMusic" src="music/love.mp3" loop volume="0.55"></audio>
+<script src="index.js"></script>
+<script src="local-count.js"></script>
+</body>
+</html>

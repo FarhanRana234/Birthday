@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <title>Her ❤️</title>
+   <link href="her.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- SLIDER -->
+    <div class="slider">
+      <img src="images/her1.jpeg" class="slide">
+      <img src="images/her2.jpeg" class="slide">
+      <img src="images/her3.jpeg" class="slide active">
+      <img src="images/her4.jpeg" class="slide">
+      <button class="nav prev">‹</button>
+      <button class="nav next">›</button>
+    </div>
+
+    <!-- LOVE LETTER -->
+    <div class="letter" id="letter" onclick="this.classList.add('show')">
+      <span>Tap to read 💌</span>
+      <p id="letterText"></p>
+    </div>
+
+    <a href="index.html">← Back to you</a>
+  </div>
+
+  <!-- MUSIC -->
+  <audio id="bgMusic" loop>
+    <source src="music/love3.mpeg" type="audio/mpeg">
+  </audio>
+<script src="slider.js"></script>
+<script src="local-count.js"></script>
+</body>
+</html>

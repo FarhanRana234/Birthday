@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+
+  <defs>
+    <linearGradient id="pinkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff9a9e"/>
+      <stop offset="100%" stop-color="#fad0c4"/>
+    </linearGradient>
+
+    <!-- Soft blush blur -->
+    <filter id="blushBlur">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+  </defs>
+
+  <style>
+    .bow {
+      transform-origin: center;
+      animation: wiggle 2.5s infinite ease-in-out;
+    }
+
+    @keyframes wiggle {
+      0%,100% { transform: rotate(0deg); }
+      50% { transform: rotate(-5deg); }
+    }
+  </style>
+
+  <!-- Head -->
+  <ellipse cx="50" cy="56" rx="36" ry="32"
+           fill="white"
+           stroke="url(#pinkGrad)"
+           stroke-width="4"/>
+
+  <!-- Blush cheeks -->
+  <ellipse cx="30" cy="62" rx="6" ry="4"
+           fill="#ffb3c6"
+           opacity="0.6"
+           filter="url(#blushBlur)"/>
+
+  <ellipse cx="70" cy="62" rx="6" ry="4"
+           fill="#ffb3c6"
+           opacity="0.6"
+           filter="url(#blushBlur)"/>
+
+  <!-- Eyes -->
+  <ellipse cx="38" cy="54" rx="3.5" ry="5" fill="#000"/>
+  <ellipse cx="62" cy="54" rx="3.5" ry="5" fill="#000"/>
+
+  <!-- Nose -->
+  <ellipse cx="50" cy="62" rx="4.5" ry="3"
+           fill="#f6a5b5"/>
+
+  <!-- Bow -->
+  <g class="bow">
+    <path d="M62 26
+             C56 18,46 18,42 26
+             C46 30,58 30,62 26Z"
+          fill="url(#pinkGrad)"/>
+
+    <path d="M90 26
+             C96 18,106 18,110 26
+             C106 30,94 30,90 26Z"
+          fill="url(#pinkGrad)"
+          transform="translate(-34 0)"/>
+
+    <circle cx="56" cy="26" r="4" fill="#ff6fae"/>
+
+    <text x="56" y="29"
+          text-anchor="middle"
+          font-size="8"
+          font-weight="700"
+          fill="#fff">A</text>
+  </g>
+
+</svg>

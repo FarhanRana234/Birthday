@@ -1,0 +1,534 @@
+/* =============================
+   GLOBAL RESET & FONT
+============================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: #fff;
+}
+
+/* =============================
+   FLOATING HEARTS
+============================= */
+.heart {
+  position: fixed;
+  bottom: -20px;
+  font-size: 20px;
+  animation: floatUp 8s linear infinite;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0) scale(0.8); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translateY(-110vh) scale(1.3); opacity: 0; }
+}
+
+/* =============================
+   HEADER
+============================= */
+header {
+  text-align: center;
+  padding: 80px 20px 40px;
+}
+
+header h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  animation: fadeDown 1.2s ease;
+}
+
+header p {
+  margin-top: 15px;
+  font-size: 1.2rem;
+  opacity: 0.95;
+  animation: fadeUp 1.5s ease;
+}
+
+@keyframes fadeDown { from { opacity: 0; transform: translateY(-40px); } to { opacity:1; transform: translateY(0); } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(40px); } to { opacity:1; transform: translateY(0); } }
+
+/* =============================
+   TREND SECTION
+============================= */
+.trend {
+  text-align: center;
+  margin: 60px 20px;
+}
+
+.trend h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+.trend span {
+  display: inline-block;
+  margin-top: 15px;
+  font-size: 1.3rem;
+  background: rgba(255,255,255,0.2);
+  padding: 10px 20px;
+  border-radius: 30px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+
+/* =============================
+   GALLERY / CARDS
+============================= */
+.gallery {
+  display: flex;
+  gap: 22px;
+  padding: 30px 25px;
+  margin: 0 auto 80px;
+  max-width: 1150px;
+
+  background: rgba(255,255,255,0.15);
+  border: 2px solid rgba(255,182,193,0.8);
+  border-radius: 28px;
+  box-shadow: 0 0 25px rgba(255,182,193,0.4), inset 0 0 20px rgba(255,255,255,0.15);
+
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.gallery::-webkit-scrollbar { display: none; }
+
+.card {
+  flex: 0 0 auto;
+  width: 260px;
+  height: 340px;
+  border-radius: 22px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 18px 35px rgba(0,0,0,0.25);
+  transform: translateY(30px);
+  opacity: 0;
+  animation: cardIn 1s ease forwards;
+  position: relative;
+}
+
+.card:nth-child(2) { animation-delay: 0.15s; }
+.card:nth-child(3) { animation-delay: 0.3s; }
+.card:nth-child(4) { animation-delay: 0.45s; }
+
+@keyframes cardIn { to { transform: translateY(0); opacity:1; } }
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.card:hover img { transform: scale(1.08); }
+
+/* Cute heart badge */
+.card::after {
+  content: '💗';
+  position: absolute;
+  bottom: 12px;
+  right: 14px;
+  font-size: 1.6rem;
+  opacity: 0.9;
+}
+
+/* =============================
+   MESSAGE SECTION
+============================= */
+.message {
+  text-align: center;
+  padding: 70px 20px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  margin: 0 20px 40px;
+}
+
+.message h2 {
+  font-size: 2.7rem;
+  margin-bottom: 20px;
+}
+
+.message p {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  line-height: 1.8;
+}
+
+/* =============================
+   FOOTER
+============================= */
+footer {
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+/* =============================
+   DESKTOP CURSOR & NO SCROLL
+============================= */
+@media (min-width: 769px) {
+  .gallery {
+    overflow-x: visible;
+    cursor: grab;
+  }
+  .gallery:active { cursor: grabbing; }
+  .card { flex-shrink: 0; min-width: 200px; }
+}
+
+/* =============================
+   MOBILE OPTIMIZATION
+============================= */
+@media (max-width: 768px) {
+  header h1 { font-size: 2.2rem; }
+  .trend h2 { font-size: 2rem; }
+  .message h2 { font-size: 2.1rem; }
+
+  .gallery {
+    flex-direction: row;
+    gap: 18px;
+    padding: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .card {
+    width: 80%;
+    max-width: 280px;
+    height: 340px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+  }
+}
+
+@media (max-width: 480px) {
+  .card { width: 90%; height: 300px; }
+  header h1 { font-size: 1.8rem; }
+  .trend h2 { font-size: 1.6rem; }
+  .message h2 { font-size: 1.7rem; }
+  .message p { font-size: 1rem; }
+}
+/* =============================
+   CARD SCROLL ANIMATION
+============================= */
+.card {
+  opacity: 0;
+  transform: scale(0.95) translateY(20px);
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.card.visible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+/* =========================
+   STICKERS (DESKTOP FIRST)
+========================= */
+
+.sticker {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  filter:
+    drop-shadow(0 0 12px rgba(255,255,255,0.35))
+    drop-shadow(0 10px 14px rgba(0,0,0,0.18));
+}
+
+
+/* Bigger sizes */
+.sticker.left,
+.sticker.right {
+  width: 150px; /* ⬆️ scaled up */
+}
+
+/* Positions */
+.sticker.left {
+  left: 30px;
+  top: 32%;
+}
+
+.sticker.right {
+  right: 30px;
+  top: 32%;
+  animation-delay: 1s;
+}
+
+
+/* =========================
+   MOBILE SAFETY
+========================= */
+
+@media (max-width: 600px) {
+
+  /* Push content inward */
+  #birthdayScreen {
+    padding-left: 70px;
+    padding-right: 70px;
+  }
+
+  .sticker.left,
+  .sticker.right {
+    width: 95px; /* smaller but still visible */
+    top: 15%;
+  }
+
+  .sticker.left {
+    left: -10px; /* slightly off-screen */
+  }
+
+  .sticker.right {
+    right: -10px;
+  }
+
+}
+
+
+/* =========================
+   SOFT PASTEL GLOW
+========================= */
+
+.sticker {
+  filter:
+    drop-shadow(0 0 12px rgba(255,255,255,0.35))
+    drop-shadow(0 10px 14px rgba(0,0,0,0.18));
+}
+
+/* =========================
+   PEEK-IN ANIMATION
+========================= */
+
+.sticker.left {
+  transform: translateX(-80px); /* start hidden */
+}
+
+.sticker.right {
+  transform: translateX(80px);
+}
+
+/* Play once */
+.sticker.peek-in {
+  animation: peekIn 1.2s cubic-bezier(0.25, 1, 0.4, 1) forwards,
+             floaty 4s ease-in-out infinite 1.2s;
+}
+
+@keyframes peekIn {
+  0% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+/* ========================= WAVE ANIMATION */
+
+.wave {
+  transform-origin: bottom center;
+}
+
+.wave.play {
+  animation: waveHello 1.6s ease-in-out 1;
+}
+
+@keyframes waveHello {
+  0%   { transform: rotate(0deg); }
+  15%  { transform: rotate(12deg); }
+  30%  { transform: rotate(-10deg); }
+  45%  { transform: rotate(12deg); }
+  60%  { transform: rotate(-6deg); }
+  75%  { transform: rotate(6deg); }
+  100% { transform: rotate(0deg); }
+}
+
+
+.sticker.float {
+  animation: floaty 4s ease-in-out infinite;
+}
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+/* =============================
+   GLOBAL MOBILE SAFETY
+============================= */
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  touch-action: manipulation;
+}
+
+/* Prevent weird mobile zoom */
+* {
+  box-sizing: border-box;
+}
+
+/* =============================
+   BIRTHDAY SCREEN RESPONSIVE
+============================= */
+#birthdayScreen {
+  position: fixed;
+  inset: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: clamp(12px, 4vw, 24px);
+  overflow: hidden;
+}
+
+/* Safe scaling wrapper (optional but recommended) */
+#birthdayScreen .content {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(12px, 4vw, 20px);
+  text-align: center;
+}
+
+/* =============================
+   TEXT SCALING
+============================= */
+#birthdayScreen h1 {
+  font-size: clamp(1.8rem, 6vw, 2.6rem);
+  line-height: 1.1;
+}
+
+#birthdayScreen p {
+  font-size: clamp(1rem, 4vw, 1.2rem);
+}
+
+/* =============================
+   CANDLE
+============================= */
+#candle {
+  font-size: clamp(3.2rem, 18vw, 5rem);
+  line-height: 1;
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+
+
+/* =============================
+   SMALL DEVICES
+============================= */
+@media (max-width: 360px) {
+  #birthdayScreen h1 {
+    font-size: 1.6rem;
+  }
+
+  #candle {
+    font-size: 3rem;
+  }
+}
+
+/* =============================
+   LANDSCAPE MOBILE
+============================= */
+@media (max-height: 420px) {
+  #birthdayScreen {
+    padding: 8px;
+  }
+
+  #candle {
+    font-size: 3rem;
+  }
+
+}
+
+/* =============================
+   DESKTOP SAFETY
+============================= */
+@media (min-width: 900px) {
+  #birthdayScreen .content {
+    max-width: 520px;
+  }
+
+}
+
+@keyframes confettiFall {
+  from {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 1;
+  }
+}
+
+.confetti {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+body {
+  touch-action: manipulation;
+}
+.music-btn {
+  position: fixed;
+  bottom: 40px; /* moved slightly down */
+  right: 20px;
+  z-index: 9999;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4); /* matching your site theme */
+  color: white;
+  border: none;
+  border-radius: 22px;
+  padding: 10px 18px; /* slightly smaller */
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.music-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.3);
+}
+
+/* Birthday screen specific button */
+#birthdayScreen .music-btn {
+  position: relative;
+  bottom: auto;
+  right: auto;
+  margin: 15px auto;
+  display: block;
+  padding: 10px 20px;
+  font-size: 15px;
+  width: fit-content;
+}
+
+/* Optional: gentle pulse animation to catch attention */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.music-btn {
+  animation: pulse 2s infinite;
+}
+
